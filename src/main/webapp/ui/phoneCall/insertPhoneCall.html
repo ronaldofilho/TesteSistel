@@ -1,0 +1,32 @@
+<section class="content-header">
+  <h1>
+  Phone Call
+  <small>Inserting</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#/"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li><a href="#/phoneCall"><i class="fa fa-phone-square"></i>Phone Call</a></li>
+    <li class="active">Insert</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <form role="form">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" rows="10" cols="50" class="form-control" ng-model="phoneCall.description"></textarea>
+            </div>            
+          </div>
+          <div class="box-footer">
+            <button class="btn btn-primary" ng-click="save()">Save</button>
+            <a class="btn btn-primary" href="#/phoneCall">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<section class="content-header">
+  <h1>
+  Estados
+  <small>Edição</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#/"><i class="fa fa-home"></i>Home</a></li>
+    <li><a href="#/estados"><i class="fa fa-map-signs"></i>Estados</a></li>
+    <li class="active">Editar</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-primary">
+        <form role="form">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="description">Descrição</label>
+              <input type="text" id="description" rows="10" cols="50" class="form-control" ng-model="estado.nome"></input>
+              <br>
+              <label for="cod">Código do Estado no IBGE</label>
+              <input type="text" id="cod" rows="10" cols="50" class="form-control" ng-model="estado.cod"></input>
+            </div>            
+          </div>
+          <div class="box-footer">
+            <button class="btn btn-primary" ng-click="update()">Atualizar</button>    
+            <a class="btn btn-primary" href="#/estados">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
