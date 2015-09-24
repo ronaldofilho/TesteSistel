@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import sistel.cidade.Cidade;
-
 @Entity
 public class CadClientes {
 

@@ -36,8 +36,17 @@
 				  </div>	
 			 </div>	
               <br>
-              <label for="endereco">Endereço</label>
-              <input type="text" id="endereco" rows="10" cols="50" class="form-control" ng-model="cliente.endereco"></input>
+              <label for="documento">Rua</label>
+              <input type="text" id="documento" rows="10" cols="50" class="form-control" ng-model="cliente.rua"></input>
+              <br> 
+              <label for="documento">Bairro</label>
+              <input type="text" id="documento" rows="10" cols="50" class="form-control" ng-model="cliente.bairro"></input>
+              <br>
+              <label for="estadoS">Estado</label>
+              <select id="estadoS" rows="10" cols="50" class="form-control" ng-model="cliente.estado" ng-options="estado.nome for estado in estados"></select>
+              <br>       
+              <label for="cidadeS">Cidade</label>
+              <select id="cidadeS" rows="10" cols="50" class="form-control" ng-model="cliente.cidade" ng-options="cidade.nome for cidade in cidades"></select>
               <br>              
             </div>              
           </div>
