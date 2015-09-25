@@ -18,7 +18,7 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'ui/dashboard.html',
-         //controller: 'DashboardControllersistel.js'
+        //controller: 'DashboardControllersistel.js'
       })
       
       .when('/phoneCall', {

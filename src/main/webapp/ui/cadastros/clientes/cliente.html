@@ -29,22 +29,22 @@
                 <th>Apelido</th>
                 <th>Documento</th>
                 <th>Data de Nascimento</th>
-                <th>Endereço</th>
+                <th>EndereÃ§o</th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="cliente in clientes">                
-                <td>{{estado.id}}</td>
-                <td>{{estado.nome}}</td>
-                <td>{{estado.apelido}}</td>
-                <td>{{estado.documento}}</td>
-                <td>{{estado.datanascimento}}</td>
-                <td>{{estado.endereco}}</td>
+              <tr ng-repeat="cadCliente in cadClientes">                
+                <td>{{cadCliente.id}}</td>
+                <td>{{cadCliente.nome}}</td>
+                <td>{{cadCliente.apelido}}</td>
+                <td>{{cadCliente.documento}}</td>
+                <td>{{cadCliente.datanascimento | date:'dd/MM/yyyy'}}</td>
+                <td>{{cadCliente.rua}} {{cadCliente.bairro}} {{cadCliente.cidade}}</td>
                 <td style="width:170px;">
-                  <a style="width:75px;" class="btn btn-sm btn-primary" href="#/estados/edit={{estado.id}}">
+                  <a style="width:75px;" class="btn btn-sm btn-primary" href="#/clientes/edit={{cadCliente.id}}">
                   <span class="glyphicon glyphicon-pencil"></span> Editar
                   </a>
-                  <button style="width:75px;" class="btn btn-sm btn-primary" ng-click="delete(estado)">
+                  <button style="width:75px;" class="btn btn-sm btn-primary" ng-click="delete(cadCliente)">
                   <span class="glyphicon glyphicon-trash" ></span> Deletar
                   </button>
                 </td>

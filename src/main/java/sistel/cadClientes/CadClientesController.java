@@ -30,12 +30,14 @@ public class CadClientesController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public CadClientes save(@RequestBody CadClientes cadClientes){
+		System.out.println(cadClientes.getDatanascimento());
 		return cadClientesRepository.saveAndFlush(cadClientes);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public CadClientes update(@PathVariable("id") long id, 
 							  @RequestBody CadClientes cadClientes	){
+		System.out.println(cadClientes.getDatanascimento());
 		return cadClientesRepository.save(cadClientes);		
 	}
 	

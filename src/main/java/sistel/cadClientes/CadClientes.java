@@ -1,5 +1,7 @@
 package sistel.cadClientes;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -10,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import sistel.cidade.Cidade;
+
 @Entity
 public class CadClientes {
 
@@ -23,25 +25,24 @@ public class CadClientes {
 	private Date datanascimento;	
 	private String rua;
 	private String bairro;
-
-	@ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-	@JoinColumn(name="cidade_id")
-	private Cidade cidade;
+	private String cidade;
+	private String estado;
 
 	
 	public CadClientes(Long id, String nome, String apelido, String documento,
-			Date datanascimento, Cidade cidade) {
+			String datanascimento, String cidade, String estado) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.apelido = apelido;
 		this.documento = documento;
-		this.datanascimento = datanascimento;
+		this.setDatanascimento(datanascimento);
 		this.cidade = cidade;
+		this.estado = estado;
 	}
 
 	public CadClientes(Long id, String nome, String apelido, String documento,
-			Date datanascimento, String rua, String bairro, Cidade cidade) {
+			Date datanascimento, String rua, String bairro, String cidade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -55,6 +56,14 @@ public class CadClientes {
 
 
 
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public CadClientes() {
 		super();
@@ -97,8 +106,13 @@ public class CadClientes {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(Date datanascimento) {
-		this.datanascimento = datanascimento;
+	public void setDatanascimento(String datanascimento) {		
+		try {
+			this.datanascimento = new SimpleDateFormat("dd/MM/yyyy").parse(datanascimento);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
@@ -122,12 +136,12 @@ public class CadClientes {
 	}
 
 
-	public Cidade getCidade() {
+	public String getCidade() {
 		return cidade;
 	}
 
 
-	public void setCidade(Cidade cidade) {
+	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
 

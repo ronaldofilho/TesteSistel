@@ -1,6 +1,6 @@
 var module = angular.module('sistel');
 
-//TODO remover esta factory pra outro arquivo
+// TODO remover esta factory pra outro arquivo
 module.factory('CadClientes', function($resource){
     return $resource('/sistel/clientes/:id', {id:'@id'}, {
         'update': {method:'PUT'},
@@ -8,7 +8,7 @@ module.factory('CadClientes', function($resource){
     });
 
 })
-.controller('CadClientesController', function($scope, CadClientes, $routeParams, $location) {
+.controller('CadClientesController', function($scope, $http, CadClientes, $routeParams, $location) {
     $scope.cadClientes = CadClientes.query();
 
     $scope.cadCliente = new CadClientes();
@@ -18,10 +18,10 @@ module.factory('CadClientes', function($resource){
     function init(){
         if(idToEdit)
             $scope.edit(idToEdit);
-    }
+    };
 
     $scope.save = function() {
-        PhoneCall.save($scope.cadCliente, function (cadClienteResult) {
+    	CadClientes.save($scope.cadCliente, function (cadClienteResult) {
             $scope.cadClientes.push(cadClienteResult);
             $scope.goToListPhoneCalls();
         }, function(result){
@@ -39,7 +39,8 @@ module.factory('CadClientes', function($resource){
 
     $scope.edit = function(idToEdit) {
         if(!isInt(idToEdit)){
-            alert(idToEdit + ' is not a valid int!'); //centralizar as validacoes
+            alert(idToEdit + ' is not a valid int!'); // centralizar as
+														// validacoes
             $scope.goToListPhoneCalls();
         }else if($location.path()=='/sistel/clientes'){
             $scope.safeApply($location.path('/sistel/clientes/edit='+idToEdit));
@@ -55,11 +56,11 @@ module.factory('CadClientes', function($resource){
         };
     };
 
-    //criar arquivo utils.js
+    // criar arquivo utils.js
     function isInt(value) {
         var x;
         return isNaN(value) ? !1 : (x = parseFloat(value), (0 | x) === x);
-    }
+    };
 
     $scope.update = function() {
     	CadClientes.update($scope.cadCliente, function (cadClienteResult) {
@@ -69,9 +70,23 @@ module.factory('CadClientes', function($resource){
             alert(result.data.message);
         }
     )};
-
+    $scope.buscarCep = function(){
+    if ($scope.cepc && $scope.cepc.length == 8){
+    	$http.get('http://cep.correiocontrol.com.br/'+$scope.cepc+'.json').success(
+    			function(cepResult){
+    				$scope.endere = cepResult;
+    				$scope.cadCliente.bairro = cepResult.bairro;
+    				$scope.cadCliente.rua = cepResult.logradouro;
+    				$scope.cadCliente.cidade = cepResult.localidade;
+    				$scope.cadCliente.estado = cepResult.uf;
+    			});
+    	}else{
+    		$scope.endere = '';
+    	};    	
+    };
+    
     $scope.goToListPhoneCalls = function() {
-        $scope.safeApply($location.path('/sistel/clientes'));
+        $scope.safeApply($location.path('/sistel/#/clientes'));
     };
 
     $scope.safeApply = function(fn) {
