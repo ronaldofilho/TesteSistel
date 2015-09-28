@@ -28,9 +28,8 @@
                 <th>Nome</th>
                 <th>Apelido</th>
                 <th>Documento</th>
-                <th>Data de Nasc.o</th>
+                <th>Data de Nascimento</th>
                 <th>Endereço</th>
-                <th>Limite</th>
               </tr>
             </thead>
             <tbody>
@@ -40,8 +39,7 @@
                 <td>{{cadCliente.apelido}}</td>
                 <td>{{cadCliente.documento}}</td>
                 <td>{{cadCliente.datanascimento | date:'dd/MM/yyyy'}}</td>
-                <td>{{cadCliente.rua}}, {{cadCliente.bairro}}, {{cadCliente.cidade}}</td>
-                <td>{{cadCliente.limite | currency}}</td>
+                <td>{{cadCliente.rua}} {{cadCliente.bairro}} {{cadCliente.cidade}}</td>
                 <td style="width:170px;">
                   <a style="width:75px;" class="btn btn-sm btn-primary" href="#/clientes/edit={{cadCliente.id}}">
                   <span class="glyphicon glyphicon-pencil"></span> Editar

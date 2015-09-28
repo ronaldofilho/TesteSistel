@@ -70,10 +70,9 @@ module.factory('CadClientes', function($resource){
             alert(result.data.message);
         }
     )};
-    
     $scope.buscarCep = function(){
-    if ($scope.cadCliente.cep && $scope.cadCliente.cep.length == 8){
-    	$http.get('http://cep.correiocontrol.com.br/'+$scope.cadCliente.cep+'.json').success(
+    if ($scope.cepc && $scope.cepc.length == 8){
+    	$http.get('http://cep.correiocontrol.com.br/'+$scope.cepc+'.json').success(
     			function(cepResult){
     				$scope.endere = cepResult;
     				$scope.cadCliente.bairro = cepResult.bairro;
@@ -87,7 +86,7 @@ module.factory('CadClientes', function($resource){
     };
     
     $scope.goToListPhoneCalls = function() {
-        $scope.safeApply($location.path('/clientes'));
+        $scope.safeApply($location.path('/sistel/#/clientes'));
     };
 
     $scope.safeApply = function(fn) {

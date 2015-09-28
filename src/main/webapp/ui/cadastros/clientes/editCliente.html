@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>
   Clientes
-  <small>EdiÃ§Ã£o</small>
+  <small>Edição</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="#/"><i class="fa fa-home"></i>Home</a></li>
@@ -18,70 +18,33 @@
           <div class="box-body">
             <div class="form-group">
               <label for="nome">Nome</label>
-              <input type="text" id="nome" rows="10" cols="50" class="form-control" ng-model="cadCliente.nome"></input>
+              <input type="text" id="nome" rows="10" cols="50" class="form-control" ng-model="cliente.nome"></input>
               <br>
               <label for="apelido">Apelido</label>
-              <input type="text" id="apelido" rows="10" cols="50" class="form-control" ng-model="cadCliente.apelido"></input>
+              <input type="text" id="apelido" rows="10" cols="50" class="form-control" ng-model="cliente.apelido"></input>
               <br>
               <label for="documento">Documento</label>
-              <input type="text" id="documento" rows="10" cols="50" class="form-control" ng-model="cadCliente.documento"></input>
+              <input type="text" id="documento" rows="10" cols="50" class="form-control" ng-model="cliente.documento"></input>
               <br>
-             <div class="form-group">
-								<label for="datanascimento">Data de Nascimento:</label>
-								<div class="input-group">
-									<div class="input-group-addon">
-										<i class="fa fa-calendar"></i>
-									</div>
-									<input type="date" id="datanascimento" name="datanas" rows="10" cols="50"
-										class="form-control" ng-model="cadCliente.datanascimento" required ></input>
-										<span class="error" ng-show="this.$error.required"> Campo de data precisa ser preenchido</span>
-								</div>
-							</div>
-							<br> 
-							
-							<label for="cep">cep</label> 
-							<input type="text"
-								id="cep" rows="10" cols="50" class="form-control" ng-model="cadCliente.cep" ng-change="buscarCep()"></input>
-							<br>
-							<label for="rua">Rua</label> 
-							
-							<input type="text"
-								id="rua" rows="10" cols="50" class="form-control"
-								ng-model="cadCliente.rua">
-							<br>
-							<label for="bairro">Bairro</label> 
-							
-							<input type="text"
-								id="bairro" rows="10" cols="50" class="form-control"
-								ng-model="cadCliente.bairro">
-							<br>
-							<label for="cidade">Cidade</label> 
-							
-							<input type="text"
-								id="cidade" rows="10" cols="50" class="form-control"
-								ng-model="cadCliente.cidade">
-							<br>
-							
-							<label for="estado">Estado</label> 
-							
-							<input type="text"
-								id="estado" rows="10" cols="50" class="form-control"
-								ng-model="cadCliente.estado">
-							<br>
-							
-							<label for="limiteV">Limite</label> 
-							
-							<input type="text"
-								id="limiteV" name="limite" rows="10" cols="50" class="form-control"
-								ng-model="cadCliente.limite" mask="99999999,99">
-							<br>
+              <div class="form-group">
+	              <label for="datanascimento">Data de Nascimento:</label>
+	              <div class="input-group">
+	                <div class="input-group-addon">
+	                  <i class="fa fa-calendar"></i>
+	                </div>             
+           			<input type="text" id="datanascimento" rows="10" cols="50" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" ng-model="cliente.datanascimento"></input>
+				  </div>	
+			 </div>	
+              <br>
+              <label for="endereco">Endereço</label>
+              <input type="text" id="endereco" rows="10" cols="50" class="form-control" ng-model="cliente.endereco"></input>
               <br>
               
             </div>            
           </div>
           <div class="box-footer">
             <button class="btn btn-primary" ng-click="update()">Atualizar</button>    
-            <a class="btn btn-primary" href="#/clientes">Cancelar</a>
+            <a class="btn btn-primary" href="#/estados">Cancelar</a>
           </div>
         </form>
       </div>
