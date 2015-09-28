@@ -1,16 +1,15 @@
 package sistel.cadClientes;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -27,20 +26,26 @@ public class CadClientes {
 	private String bairro;
 	private String cidade;
 	private String estado;
+	private String cep;
+	private BigDecimal limite;
 
 	
 	public CadClientes(Long id, String nome, String apelido, String documento,
-			String datanascimento, String cidade, String estado) {
+			Date datanascimento, String cidade, String estado, BigDecimal limite, String cep) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.apelido = apelido;
 		this.documento = documento;
-		this.setDatanascimento(datanascimento);
+		this.datanascimento = datanascimento;
 		this.cidade = cidade;
 		this.estado = estado;
+		this.limite = limite;
+		this.cep = cep;
 	}
 
+	
+	
 	public CadClientes(Long id, String nome, String apelido, String documento,
 			Date datanascimento, String rua, String bairro, String cidade) {
 		super();
@@ -53,9 +58,28 @@ public class CadClientes {
 		this.bairro = bairro;
 		this.cidade = cidade;
 	}
+	
+	
+	public String getCep() {
+		return cep;
+	}
 
 
 
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+
+
+	public BigDecimal getLimite() {
+		return limite;
+	}
+
+	public void setLimite(String limite) {
+		this.limite = new BigDecimal(limite.replace(".","").replace(",", "."));
+		this.limite = this.limite.setScale(4, RoundingMode.HALF_EVEN);
+	}
 
 	public String getEstado() {
 		return estado;
@@ -106,7 +130,7 @@ public class CadClientes {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(String datanascimento) {		
+	public void setDatanascimento(String datanascimento) {			
 		try {
 			this.datanascimento = new SimpleDateFormat("dd/MM/yyyy").parse(datanascimento);
 		} catch (ParseException e) {
